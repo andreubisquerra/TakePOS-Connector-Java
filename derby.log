@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Dec 25 23:20:11 CET 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0160-8fc3-0888-000006e7f658 
+on database directory C:\Users\Jove\jPosBox\db with class loader sun.misc.Launcher$AppClassLoader@6d06d69c 
+Loaded from file:/C:/Users/Jove/Documents/Netbeans/JARS/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_111-b14
+user.dir=C:\Users\Jove\Documents\Netbeans\jPosbox
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
