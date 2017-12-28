@@ -16,6 +16,7 @@ public class JPosbox {
      */
     public static void main(String[] args) {
         PosBoxFrame frame = new PosBoxFrame();
+        frame.LoadDB();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
