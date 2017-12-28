@@ -1,4 +1,4 @@
-Hardware Proxy develped in Java
+Hardware Proxy developed in Java
 =============================
 
 Idea to develop a Hardware Proxy to print easily without a posbox or similar
