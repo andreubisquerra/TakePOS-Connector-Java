@@ -51,6 +51,7 @@ public class PosBoxFrame extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
+        startminimized = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         ComboPrinter1 = new javax.swing.JComboBox<>();
@@ -92,6 +93,8 @@ public class PosBoxFrame extends javax.swing.JFrame {
 
         jCheckBox3.setText("Save receipts to reprint");
 
+        startminimized.setText("Start minimized");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -99,16 +102,22 @@ public class PosBoxFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBoxStart)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PosBoxesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCheckBox1)
-                    .addComponent(jButton6))
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox3)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBoxStart)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(PosBoxesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCheckBox1))
+                        .addGap(0, 105, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(startminimized)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +135,9 @@ public class PosBoxFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(startminimized))
                 .addContainerGap())
         );
 
@@ -382,8 +393,16 @@ public class PosBoxFrame extends javax.swing.JFrame {
             }
         }
         
+        if (getconf("startminimized").equals("yes")) startminimized.setSelected(true);
+        
     }
     
+    
+    public void tray(){
+        Tray tray=new Tray();
+        boolean istray=tray.tray();
+        if (istray) setVisible(false);
+    }
     
     public void StartPosBox1(){
         Web web=new Web();
@@ -459,6 +478,8 @@ public class PosBoxFrame extends javax.swing.JFrame {
             jTabbedPane1.setEnabledAt(2, true);
         }
         if (jCheckBoxStart.isSelected()) saveconf("auto", "on"); else saveconf("auto", "off");
+        if (startminimized.isSelected()) saveconf("startminimized", "yes");
+        else saveconf("startminimized", "no");
         saveconf("Printer1", ComboPrinter1.getSelectedItem().toString());
         saveconf("PortPrinter1", PortPrinter1.getText());
         saveconf("Printer2", ComboPrinter2.getSelectedItem().toString());
@@ -494,5 +515,6 @@ public class PosBoxFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JCheckBox startminimized;
     // End of variables declaration//GEN-END:variables
 }
