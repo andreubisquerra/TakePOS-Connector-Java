@@ -58,6 +58,10 @@ public class Web {
         server.createContext("/hw_proxy/handshake", new Handshake());
         server.createContext("/hw_proxy/status_json", new StatusJson());
         server.createContext("/hw_proxy/print_xml_receipt", new PrintXMLReceipt());
+        //Dolibarr
+        server.createContext("/print", new PrintReceipt());
+        server.createContext("/print2", new PrintReceipt2());
+        //End Dolibarr
         server.setExecutor(null); // creates a default executor
         server.start();
         return 0;
@@ -323,6 +327,76 @@ public class Web {
             }
          }
 }
+    
+    
+    
+    
+    
+        public class PrintReceipt implements HttpHandler {
+         @Override
+         public void handle(HttpExchange he) throws IOException {
+            try{ 
+                out.println("Data received");
+                he.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+                he.getResponseHeaders().set("Content-Type", "application/json");
+                he.getResponseHeaders().set("Access-Control-Allow-Methods", "POST");
+                he.getResponseHeaders().set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Debug-Mode");
+                Map<String, Object> parameters = new HashMap<String, Object>();
+                InputStreamReader isr = new InputStreamReader(he.getRequestBody(), "utf-8");
+                BufferedReader br = new BufferedReader(isr);
+                String text = br.readLine();
+                if (text!=null){
+                    PosPrinter P= new PosPrinter();
+                    P.html=true;
+                    P.P=text;
+                    P.print(PosBoxFrame.ComboPrinter1.getSelectedItem().toString(), 1,"7");
+                }
+                String response="";
+                he.sendResponseHeaders(200, response.length());
+                OutputStream os = he.getResponseBody();
+                os.write(response.toString().getBytes());
+                os.close();
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+         }
+}
+    
+
+   
+    
+    
+    public class PrintReceipt2 implements HttpHandler {
+         @Override
+         public void handle(HttpExchange he) throws IOException {
+            try{ 
+                out.println("Data received");
+                he.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+                he.getResponseHeaders().set("Content-Type", "application/json");
+                he.getResponseHeaders().set("Access-Control-Allow-Methods", "POST");
+                he.getResponseHeaders().set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Debug-Mode");
+                Map<String, Object> parameters = new HashMap<String, Object>();
+                InputStreamReader isr = new InputStreamReader(he.getRequestBody(), "utf-8");
+                BufferedReader br = new BufferedReader(isr);
+                String text = br.readLine();
+                if (text!=null){
+                    PosPrinter P= new PosPrinter();
+                    P.html=true;
+                    P.P=text;
+                    P.print(PosBoxFrame.ComboPrinter2.getSelectedItem().toString(), 1,"7");
+                }
+                String response="";
+                he.sendResponseHeaders(200, response.length());
+                OutputStream os = he.getResponseBody();
+                os.write(response.toString().getBytes());
+                os.close();
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+         }
+}    
     
 
     

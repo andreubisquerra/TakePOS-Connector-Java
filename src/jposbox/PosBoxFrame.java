@@ -393,6 +393,9 @@ public class PosBoxFrame extends javax.swing.JFrame {
             }
         }
         
+        //For Dolibarr
+        StartPosBoxDolibarr();
+        
         if (getconf("startminimized").equals("yes")) startminimized.setSelected(true);
         
     }
@@ -417,6 +420,16 @@ public class PosBoxFrame extends javax.swing.JFrame {
     public void StartPosBox2(){
         Web web=new Web();
         int error=web.StartServer(Integer.parseInt(getconf("PortPrinter2")), getconf("Printer2"));
+        if (error>0){
+            int dialogButton = JOptionPane.YES_OPTION;
+            JOptionPane.showMessageDialog(this, "Port "+error+" is in use");
+        }
+    }
+    
+    
+    public void StartPosBoxDolibarr(){
+        Web web=new Web();
+        int error=web.StartServer(8111, "");
         if (error>0){
             int dialogButton = JOptionPane.YES_OPTION;
             JOptionPane.showMessageDialog(this, "Port "+error+" is in use");
@@ -491,7 +504,7 @@ public class PosBoxFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JComboBox<String> ComboPrinter1;
-    private javax.swing.JComboBox<String> ComboPrinter2;
+    public static javax.swing.JComboBox<String> ComboPrinter2;
     public static javax.swing.JTextField PortPrinter1;
     private javax.swing.JTextField PortPrinter2;
     private javax.swing.JComboBox<String> PosBoxesComboBox;
