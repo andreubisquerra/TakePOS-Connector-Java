@@ -68,7 +68,7 @@ public class Tray {
     });
     menu.add(openItem);
     
-    TrayIcon icon = new TrayIcon(image, "TakeBOX", menu);
+    TrayIcon icon = new TrayIcon(image, "jPosBox", menu);
     icon.setImageAutoSize(true);
 
         try {
