@@ -17,8 +17,9 @@ public class JPosbox {
     public static void main(String[] args) {
         PosBoxFrame frame = new PosBoxFrame();
         frame.LoadDB();
-        frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        if (frame.getconf("startminimized").equals("yes")) frame.tray();
+        else frame.setVisible(true);
     }
     
 }
