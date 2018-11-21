@@ -345,6 +345,14 @@ public class Web {
                 InputStreamReader isr = new InputStreamReader(he.getRequestBody(), "utf-8");
                 BufferedReader br = new BufferedReader(isr);
                 String text = br.readLine();
+                if (text.equals("opendrawer")){
+                    PosPrinter P= new PosPrinter();
+                    P.html=false;
+                    final byte[] openCD={27,112,0,100,120};
+                    String s=new String(openCD);
+                    P.add(s);
+                    P.print(PosBoxFrame.ComboPrinter1.getSelectedItem().toString(), 1,"7");
+                }
                 if (text!=null){
                     PosPrinter P= new PosPrinter();
                     P.html=true;
