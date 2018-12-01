@@ -188,7 +188,7 @@ public class PosBoxFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Printer2", jPanel3);
+        jTabbedPane1.addTab("Printer 2", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

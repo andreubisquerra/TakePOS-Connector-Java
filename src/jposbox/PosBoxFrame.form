@@ -217,8 +217,8 @@
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Printer2">
-                <Property name="tabTitle" type="java.lang.String" value="Printer2"/>
+              <JTabbedPaneConstraints tabName="Printer 2">
+                <Property name="tabTitle" type="java.lang.String" value="Printer 2"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
