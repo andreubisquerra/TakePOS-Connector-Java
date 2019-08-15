@@ -110,6 +110,10 @@ public class PosPrinter {
     
     
     void print(String printer, int copies, String FontSize) {
+        //Remove html5 tags
+        P=P.replace("<style>.right     text-align: right.center     text-align: center.left     text-align: left</style>", "");
+        P=P.replace("class=", "align=");
+        //End remove html5 tags
         if (printer.equals("nada")) {out.println("Printer not configured"); return;}
         PrintService[] printServices; // PARA WINDOWS
         PrintServiceAttributeSet printServiceAttributeSet = new HashPrintServiceAttributeSet();
